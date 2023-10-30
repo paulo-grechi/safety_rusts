@@ -1,9 +1,8 @@
 use log::info;
-
 use log4rs;
 
 fn main() -> Result<(), Box<dyn std::error::Error>> {
-	log4rs::init_file("src/log.yaml", Default::default()).unwrap();
+	log4rs::init_file("/home/paulo/safety_rusts/src/log.yaml", Default::default()).unwrap();
 	let path_s = std::env::args().nth(1).expect("no param");
 	let pattern = std::env::args().nth(2).expect("no param");
 	let path = std::path::PathBuf::from(path_s);
