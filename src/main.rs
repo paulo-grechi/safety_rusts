@@ -2,7 +2,7 @@ use log::info;
 use log4rs;
 
 fn main() -> Result<(), Box<dyn std::error::Error>> {
-	log4rs::init_file("/home/paul/safety_rusts-master/src/log.yaml", Default::default()).unwrap();
+	log4rs::init_file("/home/paulo/safety_rusts/src/log.yaml", Default::default()).unwrap();
 	let args: Vec<String> = std::env::args().collect();
 	let path_s = parse_args(&args);
 	let path = std::path::PathBuf::from(path_s);
