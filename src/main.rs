@@ -1,3 +1,4 @@
+
 use log::info;
 use log4rs;
 use std::{
@@ -21,9 +22,8 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
 
 fn find_pattern(content: &str, filename: &str){
 	for line in content.lines(){
-		match line {
-			x if has_rm_sudo(x) => info!("{}", line),
-			_ => (),
+		if has_rm_sudo(line){
+			info!("{} => {}", filename, line);
 		}
 	}
 }
@@ -43,13 +43,13 @@ fn read_path(paths: &Path,mut contador: Contador) -> Result<Contador, Box<dyn st
 			Ok(_) => {
 				contador.files += 1;
 				let file = fs::read_to_string(&path).unwrap();
-				find_pattern(file, &path.display().to_string());
+				find_pattern(&file, &path.display().to_string());
 			},
 			Err(_) => {
 				if path.is_dir(){
 					contador.folders += 1;
 					contador = read_path(&path, contador).unwrap();
-				} 
+				}
 			}
 		}
 	}
