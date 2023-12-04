@@ -1,5 +1,3 @@
-
-
 use log::info;
 use log4rs;
 use std::{
