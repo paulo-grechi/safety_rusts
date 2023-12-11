@@ -12,7 +12,7 @@ use homedir::get_my_home;
 
 use safety_rusts::Contador;
 
-fn main() -> Result<(), Box<dyn std::error::Error>> {
+pub fn main() -> Result<(), Box<dyn std::error::Error>> {
 	log4rs::init_file("log.yaml", Default::default()).unwrap();
 	let mut children = vec![];	
 	let sys_time = SystemTime::now();
@@ -81,7 +81,7 @@ fn read_path(paths: &Path) -> Result<(), Box<dyn std::error::Error>> { // ,mut c
 				find_pattern(&file, &paths.display().to_string());
 			},
 			Err(_) => {
-				println!("deu erro");
+				//println!("{}", er);
 			}
 		}
 	}
